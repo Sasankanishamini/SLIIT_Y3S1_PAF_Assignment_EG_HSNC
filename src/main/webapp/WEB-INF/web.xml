@@ -17,16 +17,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>PowerconsumptionServlet</display-name>
-    <servlet-name>PowerconsumptionServlet</servlet-name>
-    <servlet-class>com.paf_project.ElectroGrid.Servlet.PowerconsumptionServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>PowerconsumptionServlet</servlet-name>
-    <url-pattern>/PowerconsumptionServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>UserServlet</display-name>
     <servlet-name>UserServlet</servlet-name>
     <servlet-class>com.paf_project.ElectroGrid.Servlet.UserServlet</servlet-class>
@@ -35,4 +25,9 @@
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/UserServlet</url-pattern>
   </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>User.jsp</welcome-file>
+  </welcome-file-list>
+  
 </web-app>
