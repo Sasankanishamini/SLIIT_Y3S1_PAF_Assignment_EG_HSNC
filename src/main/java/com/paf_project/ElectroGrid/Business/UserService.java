@@ -49,8 +49,7 @@ public class UserService
 				user.setNic(resultset.getString(3));
 				user.setAddress(resultset.getString(4));
 				user.setPhone(resultset.getInt(5));
-				user.setPassword(resultset.getString(6));
-				user.setEmail(resultset.getString(7));
+				user.setEmail(resultset.getString(6));
 				
 				users.add(user);
 				
@@ -86,8 +85,7 @@ public class UserService
 				user.setNic(resultset.getString(3));
 				user.setAddress(resultset.getString(4));
 				user.setPhone(resultset.getInt(5));
-				user.setPassword(resultset.getString(6));
-				user.setEmail(resultset.getString(7));					
+				user.setEmail(resultset.getString(6));					
 			
 			}
 			
@@ -105,7 +103,7 @@ public class UserService
 	//ADD A NEW USER
 	public ResponseViewModel addUser(User user) {
 		
-		String sql = "insert into `electrogriddb`.`user` values (?,?,?,?,?,?,?)";		
+		String sql = "insert into `electrogriddb`.`user` values (?,?,?,?,?,?)";		
 		ResponseViewModel response = new ResponseViewModel();
 		
 		try {
@@ -117,8 +115,7 @@ public class UserService
 			preparedStatement.setString(3, user.getNic());
 			preparedStatement.setString(4, user.getAddress());
 			preparedStatement.setInt(5, user.getPhone());
-			preparedStatement.setString(6, user.getPassword());
-			preparedStatement.setString(7, user.getEmail());			
+			preparedStatement.setString(6, user.getEmail());			
 
 			preparedStatement.executeUpdate();
 			
@@ -143,7 +140,7 @@ public class UserService
 	//UPDATE USER DETAILS
 	public void updateUser(User user) {
 		
-		String sql = "update `electrogriddb`.`user` set `name` = ?, `nic` = ?, `address` = ?, `phone` = ?, `password` = ?, `email` = ? where (`id` = ?);";
+		String sql = "update `electrogriddb`.`user` set `name` = ?, `nic` = ?, `address` = ?, `phone` = ?, `email` = ? where (`id` = ?);";
 				
 		try {
 			
@@ -153,9 +150,8 @@ public class UserService
 			statement.setString(2, user.getNic());
 			statement.setString(3, user.getAddress());
 			statement.setInt(4, user.getPhone());
-			statement.setString(5, user.getPassword());
-			statement.setString(6, user.getEmail());
-			statement.setInt(7, user.getUserId());			
+			statement.setString(5, user.getEmail());
+			statement.setInt(6, user.getUserId());			
 
 			statement.executeUpdate();			
 			

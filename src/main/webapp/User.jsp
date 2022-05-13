@@ -13,6 +13,7 @@
 	UserService userService=new UserService();
 	List<User> users= userService.getUsers();
 	
+	User userRow = new User();
 %>
 
     
@@ -27,6 +28,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="shortcut icon" href="#">
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -39,6 +41,15 @@
 <title>User List</title>
 </head>
 <body>
+
+<figure class="text-center">
+<blockquote class="blockquote">
+<h2><b>User Management</b></h2>
+</blockquote>
+<figcaption class="blockquote-footer">
+Manage User details
+</figcaption>
+</figure>
 
 
 <div class="container-xl">
@@ -70,6 +81,7 @@
 				
 				<%for (int recodeCount = 0; recodeCount < users.size();recodeCount++){ %>
 				<% User user = users.get(recodeCount); %>
+				<% userRow = user; %>
 				
  					<tr>
 						<td></td>
@@ -107,7 +119,7 @@
 <div id="addUserModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form id="formItem" name="formItem">
+			<form id="addForm" name="addForm">
 				<div class="modal-header">						
 					<h4 class="modal-title">Add User</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -123,7 +135,7 @@
 					</div>					
 					<div class="form-group">
 						<label>Address</label>
-						<textarea class="form-control" id = "address" name = "address" required></textarea>
+						<input type="text" class="form-control" id = "address" name = "address" required>
 					</div>
 					<div class="form-group">
 						<label>Phone</label>
@@ -133,12 +145,15 @@
 						<label>Email</label>
 						<input type="email" class="form-control" id = "email" name = "email" required>
 					</div>					
-				</div>
+				</div>				
+					<div id="alertSuccess" class="alert alert-success"></div>
+					<div id="alertError" class="alert alert-danger"></div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-success" id = "addUser" value="Add">
+					<input type="submit" class="btn btn-success" id = "addUser" name = "addUser" value="Add">
 				</div>
 			</form>
+					
 		</div>
 	</div>
 </div>
@@ -148,36 +163,39 @@
 <div id="editUserModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form id="formItem" name="formItem">
+			<form id="editForm" name="editForm">
 				<div class="modal-header">						
 					<h4 class="modal-title">Edit User</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
+				<input id="uId" name="uId" value=<%= userRow.getUserId() %> type ="hidden">
 				<div class="modal-body">					
 					<div class="form-group">
 						<label>Name</label>
-						<input type="text" class="form-control" required>
+						<input type="text" class="form-control" name = "editName" id = "editName" value=<%= userRow.getName() %> required>
 					</div>
 					<div class="form-group">
 						<label>NIC</label>
-						<input type="text" class="form-control" required>
+						<input type="text" class="form-control" name = "editNic" id = "editNic" value=<%= userRow.getNic() %> required>
 					</div>
 					<div class="form-group">
 						<label>Address</label>
-						<textarea class="form-control" required></textarea>
+						<input type="text" class="form-control" name = "editAddress" id = "editAddress" value=<%= userRow.getAddress() %> required>
 					</div>
 					<div class="form-group">
 						<label>Phone</label>
-						<input type="number" class="form-control" required>
+						<input type="number" class="form-control" name = "editPhone" id = "editPhone" value=<%= userRow.getPhone() %> required>
 					</div>
 					<div class="form-group">
 						<label>Email</label>
-						<input type="email" class="form-control" required>
+						<input type="email" class="form-control" name = "editEmail" id = "editEmail" value=<%= userRow.getEmail() %> required>
 					</div>					
 				</div>
+					<div id="editAlertSuccess" class="alert alert-success"></div>
+					<div id="editAlertError" class="alert alert-danger"></div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-info" value="Save">
+					<input type="submit" class="btn btn-info" name = "editUser" id = "editUser" value="Save">
 				</div>
 			</form>
 		</div>

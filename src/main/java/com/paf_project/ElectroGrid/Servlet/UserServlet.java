@@ -90,10 +90,9 @@ public class UserServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//doGet(request, response);
+		//doGet(request, response);		
 		
-		
-		Map<String, Object> map = new HashMap <String, Object>();
+	/*	Map<String, Object> map = new HashMap <String, Object>();
 		boolean isValid = false;
 		String name = request.getParameter("name");
 		if (name !=null && name.trim().length()!=0){
@@ -106,8 +105,6 @@ public class UserServlet extends HttpServlet {
 		write(response,map);
 		
 	}
-
-
 		private void write(HttpServletResponse response, Map<String, Object> map) throws IOException {
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
@@ -117,4 +114,30 @@ public class UserServlet extends HttpServlet {
 	
 	
 
+*/
+		
+		
+			UserService userService=new UserService();
+			User user = new User();
+
+			String name = request.getParameter("name");
+			String nic = request.getParameter("nic");
+			String address = request.getParameter("address");
+			int phone = Integer.parseInt(request.getParameter("phone"));
+			String email = request.getParameter("email");
+			
+			
+			user.setName(name);				
+			user.setNic(nic);
+			user.setAddress(address);
+			user.setPhone(phone);
+			user.setEmail(email);
+			
+
+			ResponseViewModel responseViewModel = userService.addUser(user);
+
+			response.getWriter().write(responseViewModel.message);
+			}
+	
 }
+		
