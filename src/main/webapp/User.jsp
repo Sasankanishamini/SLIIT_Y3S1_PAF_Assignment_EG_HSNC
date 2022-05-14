@@ -6,6 +6,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="com.paf_project.ElectroGrid.Model.*" %>
 <%@ page import="com.paf_project.ElectroGrid.Business.*" %>
+<%@ page import="com.paf_project.ElectroGrid.DBcontext.*" %>
 
 
 
@@ -205,7 +206,7 @@ Manage User details
 <div id="deleteUserModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form>
+			<form id = "deleteForm" name = "deleteForm">
 				<div class="modal-header">						
 					<h4 class="modal-title">Delete User</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -216,7 +217,7 @@ Manage User details
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-danger" value="Delete">
+					<input type="submit" class="btn btn-danger" id = "delete" name = "delete" value="Delete">
 				</div>
 			</form>
 		</div>

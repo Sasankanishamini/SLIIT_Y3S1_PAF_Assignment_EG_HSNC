@@ -1,6 +1,10 @@
 package com.paf_project.ElectroGrid.Servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -138,6 +142,42 @@ public class UserServlet extends HttpServlet {
 
 			response.getWriter().write(responseViewModel.message);
 			}
+	
+	
+	
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		response.setContentType("text/html");
+		PrintWriter pw = response.getWriter();
+
+		String userId = request.getParameter("id");
+
+		try {
+		//Class.forName("com.mysql.jdbc.Driver");
+		//String user = "root";
+		//String pass = "root";
+		//String query = "delete from user_details where email=?";
+		Connection con = DriverManager.getConnection("jdbc:mysql://locahost:3306/electrogriddb", "root", "12345");
+		PreparedStatement ps = con.prepareStatement("DELETE FROM `electrogriddb`.`user` WHERE (`id` = ?);");
+		ps.setString(1, "name");
+
+
+
+		int i = ps.executeUpdate();
+
+
+
+		if(i > 0) {
+		System.out.println("User successfully removed...");
+		}
+
+
+
+		} catch (Exception e) {
+		System.out.println(e);
+		}
+	}
+	
 	
 }
 		

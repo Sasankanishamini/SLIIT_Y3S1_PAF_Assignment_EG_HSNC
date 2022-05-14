@@ -195,6 +195,36 @@ function onItemEditComplete(response, status) {
 }
 	
 	
+	
+	
+	//delete================================================================
+$(document).ready(function() {
+			$.ajax({
+			url: "UserServlet",
+			type: "DELETE",
+			cache: false,
+			success: function(dataResult){
+				$('#deleteForm').html(dataResult);
+			}
+});
+		$(document).on("click", ".delete", function() {
+			var $ele = $(this).parent().parent();
+			$.ajax({
+				url: "UserServlet",
+				type: "DELETE",
+				cache: false,
+				data:{
+					id: $(this).attr("id")
+			},
+			success: function(dataResult){
+				var dataResult = JSON.parse(dataResult);
+				if(dataResult.statusCode==name){
+					$ele.fadeOut().remove();
+				}
+			}
+		});
+	});
+});
 
 /*
 $(document).ready(function(){
