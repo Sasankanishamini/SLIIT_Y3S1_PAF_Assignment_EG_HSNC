@@ -153,10 +153,7 @@ public class UserServlet extends HttpServlet {
 		String userId = request.getParameter("id");
 
 		try {
-		//Class.forName("com.mysql.jdbc.Driver");
-		//String user = "root";
-		//String pass = "root";
-		//String query = "delete from user_details where email=?";
+		
 		Connection con = DriverManager.getConnection("jdbc:mysql://locahost:3306/electrogriddb", "root", "12345");
 		PreparedStatement ps = con.prepareStatement("DELETE FROM `electrogriddb`.`user` WHERE (`id` = ?);");
 		ps.setString(1, "name");
