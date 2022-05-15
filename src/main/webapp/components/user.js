@@ -226,29 +226,6 @@ $(document).ready(function() {
 	});
 });
 
-/*
-$(document).ready(function(){
-	$('#addForm').submit(function(){
-		$.ajax({
-			url: 'userServlet',
-			type: 'POST',
-			dataType: 'json',
-			data: $('#addForm').serialize(),
-			success:function(data){
-				if(data.isValid){
-					$('#displayUsers').html(+data.name);
-					$('#displayUsers').slideDown(500);
-				}
-				else{
-					alert('add records');
-				}				
-			}			
-		});
-		return false;
-	})
-	
-})
-*/
 
 
 

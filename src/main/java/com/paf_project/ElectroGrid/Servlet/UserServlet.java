@@ -5,18 +5,13 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import com.google.gson.Gson;
 import com.paf_project.ElectroGrid.Business.UserService;
 import com.paf_project.ElectroGrid.Model.User;
 import com.paf_project.ElectroGrid.ViewModel.ResponseViewModel;
@@ -48,78 +43,11 @@ public class UserServlet extends HttpServlet {
 		
 	}
 		
-		/*
-		String action = request.getServletPath();
 		
-		switch (action) {
-		case "/new":
-			showNewForm(request, response);
-			break;
-		case "/insert":
-			break;
-		case "/delete":
-			break;
-		case "/edit":
-			break;
-		case "/update":
-			break;
-		default:
-			break;
-		 		
-		}
-	}
-	
-	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("User.jsp");
-		dispatcher.forward(request, response);
-	}
-	
-	
-	private void addUser(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException{
-		String name = request.getParameter("name");
-		String nic = request.getParameter("nic");
-		String address = request.getParameter("address");
-		String phone = request.getParameter("phone");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		User newUser = new User(name, nic, address, email, password);
-		ResponseViewModel.addUser(newUser);
-		response.sendRedirect("list");
-		
-	}
-	*/
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//doGet(request, response);		
-		
-	/*	Map<String, Object> map = new HashMap <String, Object>();
-		boolean isValid = false;
-		String name = request.getParameter("name");
-		if (name !=null && name.trim().length()!=0){
-			isValid = true;
 			
-			map.put("name", name);
-		}
-		
-		map.put("isValid", isValid);
-		write(response,map);
-		
-	}
-		private void write(HttpServletResponse response, Map<String, Object> map) throws IOException {
-			response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(new Gson().toJson(map));
-			
-		}
-	
-	
-
-*/
-		
 		
 			UserService userService=new UserService();
 			User user = new User();
